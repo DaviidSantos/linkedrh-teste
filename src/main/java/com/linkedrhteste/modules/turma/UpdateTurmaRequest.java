@@ -2,11 +2,10 @@ package com.linkedrhteste.modules.turma;
 
 import java.util.Date;
 
-public class InsertRequest {
+public class UpdateTurmaRequest {
     private Date inicio;
     private Date fim;
     private String local;
-    private Integer cursoId;
 
     public Date getInicio() {
         return inicio;
@@ -30,13 +29,5 @@ public class InsertRequest {
 
     public void setLocal(String local) {
         this.local = local;
-    }
-
-    public Integer getCursoId() {
-        return cursoId;
-    }
-
-    public void setCursoId(Integer curso_id) {
-        this.cursoId = curso_id;
     }
 }

@@ -4,14 +4,14 @@ import com.linkedrhteste.modules.curso.Curso;
 
 import java.util.Date;
 
-public class Response {
+public class TurmaResponse {
     private Integer codigo;
     private Date inicio;
     private Date fim;
     private String local;
     private Curso curso;
 
-    public Response(Integer codigo, Date inicio, Date fim, String local, Curso curso) {
+    public TurmaResponse(Integer codigo, Date inicio, Date fim, String local, Curso curso) {
         this.codigo = codigo;
         this.inicio = inicio;
         this.fim = fim;
