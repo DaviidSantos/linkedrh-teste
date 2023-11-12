@@ -44,11 +44,14 @@ public class TurmaJDBCRepository implements Repository{
     @Override
     public List<TurmaResponse> listTurmasCurso(Integer cursoId) {
         String query = """
-                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome AS curso
+                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome AS curso, COUNT(tp.funcionario) AS qtdeParticipantes
                 FROM turma t
                 INNER JOIN curso c
                 ON t.curso = c.codigo
+                INNER JOIN turma_participante tp
+                ON t.codigo = tp.turma
                 WHERE c.codigo = ?
+                GROUP BY t.codigo, t.inicio, t.fim, t.local, c.nome
                 ORDER BY inicio, fim;
                 """;
         return jdbc.query(query, new TurmaWrapper(), cursoId);
@@ -87,11 +90,14 @@ public class TurmaJDBCRepository implements Repository{
     @Override
     public Optional<TurmaResponse> getTurma(Integer turmaId) {
         String query = """
-                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome AS curso
+                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome AS curso, COUNT(tp.funcionario) AS qtdeParticipantes
                 FROM turma t
                 INNER JOIN curso c
                 ON t.curso = c.codigo
-                WHERE t.codigo = ?;
+                INNER JOIN turma_participante tp
+                ON t.codigo = tp.turma
+                WHERE t.codigo = ?
+                GROUP BY t.codigo, t.inicio, t.fim, t.local, c.nome;
                 """;
         return jdbc.query(query, new TurmaWrapper(), turmaId).stream().findFirst();
     }

@@ -14,7 +14,8 @@ public class TurmaWrapper implements RowMapper<TurmaResponse> {
                 rs.getDate("inicio"),
                 rs.getDate("fim"),
                 rs.getString("local"),
-                rs.getString("curso")
+                rs.getString("curso"),
+                rs.getInt("qtdeParticipantes")
         );
     }
 }
