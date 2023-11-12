@@ -1,15 +1,15 @@
 package com.linkedrhteste.modules.curso;
 
-public class Entity {
+public class Curso {
     private Integer codigo;
     private String nome;
     private String descricao;
     private Integer duracao;
 
-    public Entity() {
+    public Curso() {
     }
 
-    public Entity(Integer codigo, String nome, String descricao, Integer duracao) {
+    public Curso(Integer codigo, String nome, String descricao, Integer duracao) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
