@@ -2,7 +2,7 @@ package com.linkedrhteste.modules.turma;
 
 import java.util.Date;
 
-public class Request {
+public class InsertRequest {
     private Date inicio;
     private Date fim;
     private String local;
