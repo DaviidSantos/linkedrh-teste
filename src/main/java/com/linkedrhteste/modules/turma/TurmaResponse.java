@@ -9,9 +9,9 @@ public class TurmaResponse {
     private Date inicio;
     private Date fim;
     private String local;
-    private Curso curso;
+    private String curso;
 
-    public TurmaResponse(Integer codigo, Date inicio, Date fim, String local, Curso curso) {
+    public TurmaResponse(Integer codigo, Date inicio, Date fim, String local, String curso) {
         this.codigo = codigo;
         this.inicio = inicio;
         this.fim = fim;
@@ -35,7 +35,7 @@ public class TurmaResponse {
         return local;
     }
 
-    public Curso getCurso() {
+    public String getCurso() {
         return curso;
     }
 }

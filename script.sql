@@ -20,11 +20,11 @@ CREATE TABLE turma(
                       inicio DATE NOT NULL,
                       fim DATE NOT NULL,
                       local VARCHAR(200),
-                      curso INTEGER REFERENCES curso(codigo)
+                      curso INTEGER REFERENCES curso(codigo) ON DELETE CASCADE
 );
 
 CREATE TABLE turma_participante(
                                    codigo SERIAL PRIMARY KEY,
-                                   turma INTEGER REFERENCES turma(codigo),
-                                   funcionario INTEGER REFERENCES funcionario(codigo)
+                                   turma INTEGER REFERENCES turma(codigo) ON DELETE CASCADE,
+                                   funcionario INTEGER REFERENCES funcionario(codigo)ON DELETE CASCADE
 );
