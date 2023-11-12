@@ -12,4 +12,16 @@ public class Response {
         this.descricao = descricao;
         this.duracao = duracao;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Integer getDuracao() {
+        return duracao;
+    }
 }
