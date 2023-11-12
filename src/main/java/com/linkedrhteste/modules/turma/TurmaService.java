@@ -1,8 +1,8 @@
 package com.linkedrhteste.modules.turma;
 
-import com.linkedrhteste.modules.curso.errors.InternalErrorException;
-import com.linkedrhteste.modules.curso.errors.NotFoundException;
-import com.linkedrhteste.modules.curso.errors.RequiredFieldException;
+import com.linkedrhteste.errors.InternalErrorException;
+import com.linkedrhteste.errors.NotFoundException;
+import com.linkedrhteste.errors.RequiredFieldException;
 import com.linkedrhteste.modules.turma.usecases.*;
 
 import java.util.Date;

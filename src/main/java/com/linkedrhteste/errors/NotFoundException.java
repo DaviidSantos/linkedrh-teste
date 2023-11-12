@@ -1,4 +1,4 @@
-package com.linkedrhteste.modules.curso.errors;
+package com.linkedrhteste.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
