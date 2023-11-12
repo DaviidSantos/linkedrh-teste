@@ -23,7 +23,6 @@ public class Service {
         Create create  = new Create(repository);
         int result = create.execute(request);
 
-        // To handle
         if (result != 1) {
             throw new InternalErrorException("Erro ao inserir curso na base de dados!");
         }
@@ -35,7 +34,6 @@ public class Service {
 
         Optional<Response> curso = get.execute(code);
 
-        // To handle
         if(curso.isEmpty()) {
             throw new NotFoundException("Curso não encontrado!");
         }
