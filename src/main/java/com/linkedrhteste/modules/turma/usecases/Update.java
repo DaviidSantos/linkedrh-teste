@@ -1,6 +1,5 @@
 package com.linkedrhteste.modules.turma.usecases;
 
-import com.linkedrhteste.modules.turma.InsertTurmaRequest;
 import com.linkedrhteste.modules.turma.Repository;
 import com.linkedrhteste.modules.turma.UpdateTurmaRequest;
 
