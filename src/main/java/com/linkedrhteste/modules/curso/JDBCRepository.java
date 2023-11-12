@@ -50,6 +50,7 @@ public class JDBCRepository implements Repository {
         return jdbc.query(query, new Wrapper());
     }
 
+    @Override
     public Optional<Response> getCurso(Integer code) {
         String query = """
                 SELECT * 
