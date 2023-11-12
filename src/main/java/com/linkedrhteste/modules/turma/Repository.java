@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Repository {
     int insertTurma(InsertTurmaRequest request);
-    int updateTurma(UpdateTurmaRequest request);
+    int updateTurma(Integer code, UpdateTurmaRequest request);
     int deleteTurma(Integer code);
     List<TurmaResponse> listTurmasCurso(Integer curso_id);
     int addParticipante(Integer turma_id, Integer funcionario_id);
