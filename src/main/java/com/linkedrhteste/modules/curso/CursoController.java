@@ -6,10 +6,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/cursos")
-public class Controller {
-    private final Service service;
+public class CursoController {
+    private final CursoService service;
 
-    public Controller(Service service) {
+    public CursoController(CursoService service) {
         this.service = service;
     }
 

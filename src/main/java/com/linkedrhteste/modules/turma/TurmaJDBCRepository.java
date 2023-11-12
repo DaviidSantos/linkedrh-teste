@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-public class JDBCRepository implements Repository{
+public class TurmaJDBCRepository implements Repository{
     private final JdbcTemplate jdbc;
 
-    public JDBCRepository(JdbcTemplate jdbc) {
+    public TurmaJDBCRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
 
@@ -44,11 +44,12 @@ public class JDBCRepository implements Repository{
     @Override
     public List<TurmaResponse> listTurmasCurso(Integer cursoId) {
         String query = """
-                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome
+                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome AS curso
                 FROM turma t
                 INNER JOIN curso c
                 ON t.curso = c.codigo
-                WHERE c.codigo = ?;
+                WHERE c.codigo = ?
+                ORDER BY inicio, fim;
                 """;
         return jdbc.query(query, new TurmaWrapper(), cursoId);
     }
@@ -86,11 +87,11 @@ public class JDBCRepository implements Repository{
     @Override
     public Optional<TurmaResponse> getTurma(Integer turmaId) {
         String query = """
-                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome
+                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome AS curso
                 FROM turma t
                 INNER JOIN curso c
                 ON t.curso = c.codigo
-                WHERE t.codigo = ?
+                WHERE t.codigo = ?;
                 """;
         return jdbc.query(query, new TurmaWrapper(), turmaId).stream().findFirst();
     }

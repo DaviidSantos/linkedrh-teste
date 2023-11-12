@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-public class JDBCRepository implements Repository {
+public class CursoJDBCRepository implements Repository {
     private final JdbcTemplate jdbc;
 
-    public JDBCRepository(JdbcTemplate jdbc) {
+    public CursoJDBCRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
 

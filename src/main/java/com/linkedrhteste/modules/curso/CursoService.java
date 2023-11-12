@@ -8,10 +8,10 @@ import com.linkedrhteste.modules.curso.usecases.*;
 import java.util.Optional;
 
 @org.springframework.stereotype.Service
-public class Service {
+public class CursoService {
     private final Repository repository;
 
-    public Service(Repository repository) {
+    public CursoService(Repository repository) {
         this.repository = repository;
     }
 

@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Service
-public class Service {
+public class TurmaService {
     private final Repository repository;
 
-    public Service(Repository repository) {
+    public TurmaService(Repository repository) {
         this.repository = repository;
     }
 
@@ -85,21 +85,35 @@ public class Service {
 
     public void addParticipante(Integer turmaId, Integer funcionarioId) {
         AddParticipante add = new AddParticipante(repository);
+        Get get = new Get(repository);
+
+        Optional<TurmaResponse> turma = get.execute(turmaId);
+
+        if(turma.isEmpty()) {
+            throw new NotFoundException("Turma não encontrada!");
+        }
 
         int result = add.execute(turmaId, funcionarioId);
 
         if(result != 1) {
-            throw new InternalErrorException("Erro ao inserir participante na turma!");
+            throw new InternalErrorException("Erro ao inserir participante da turma!");
         }
     }
 
     public void removeParticipante(Integer turmaId, Integer funcionarioId) {
         RemoveParticipante remove = new RemoveParticipante(repository);
+        Get get = new Get(repository);
+
+        Optional<TurmaResponse> turma = get.execute(turmaId);
+
+        if(turma.isEmpty()) {
+            throw new NotFoundException("Turma não encontrada!");
+        }
 
         int result = remove.execute(turmaId, funcionarioId);
 
         if(result != 1) {
-            throw new InternalErrorException("Erro ao inserir participante na turma!");
+            throw new InternalErrorException("Erro ao remover participante da turma!");
         }
     }
 
@@ -116,13 +130,13 @@ public class Service {
         return list.execute(code);
     }
 
-    public void validateFieldRequest(String field, String value) {
+    private static void validateFieldRequest(String field, String value) {
         if(value == null || value.isEmpty()) {
             throw new RequiredFieldException("O campo " + field + " é obrigatório!");
         }
     }
 
-    public void validateFieldRequest(String field, Date value) {
+    private static void validateFieldRequest(String field, Date value) {
         if(value == null) {
             throw new RequiredFieldException("O campo " + field + " é obrigatório!");
         }
