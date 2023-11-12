@@ -40,11 +40,11 @@ public class Service {
             throw new NotFoundException("Curso não encontrado!");
         }
 
-        if(request.getNome().isEmpty()) {
+        if(request.getNome() == null || request.getNome().isEmpty()) {
             request.setNome(curso.get().getNome());
         }
 
-        if(request.getDescricao().isEmpty()) {
+        if(request.getDescricao() == null || request.getDescricao().isEmpty()) {
             request.setDescricao(curso.get().getDescricao());
         }
 
