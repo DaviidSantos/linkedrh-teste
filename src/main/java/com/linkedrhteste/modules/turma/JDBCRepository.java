@@ -3,6 +3,7 @@ package com.linkedrhteste.modules.turma;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.stereotype.Repository
 public class JDBCRepository implements Repository{
@@ -14,7 +15,7 @@ public class JDBCRepository implements Repository{
 
     @Override
     public int insertTurma(InsertTurmaRequest request) {
-        String statement = """
+        String statement = """ 
                 INSERT INTO turma(inicio, fim, local, curso)
                 VALUES(?, ?, ?, ?);
                 """;
@@ -47,7 +48,7 @@ public class JDBCRepository implements Repository{
                 FROM turma t
                 INNER JOIN curso c
                 ON t.curso = c.codigo
-                WHERE t.curso = ?;
+                WHERE c.codigo = ?;
                 """;
         return jdbc.query(query, new TurmaWrapper(), cursoId);
     }
@@ -81,4 +82,17 @@ public class JDBCRepository implements Repository{
                 """;
         return jdbc.query(query, new ParticipanteWrapper(), turmaId);
     }
+
+    @Override
+    public Optional<TurmaResponse> getTurma(Integer turmaId) {
+        String query = """
+                SELECT t.codigo, t.inicio, t.fim, t.local, c.nome
+                FROM turma t
+                INNER JOIN curso c
+                ON t.curso = c.codigo
+                WHERE t.codigo = ?
+                """;
+        return jdbc.query(query, new TurmaWrapper(), turmaId).stream().findFirst();
+    }
+
 }
