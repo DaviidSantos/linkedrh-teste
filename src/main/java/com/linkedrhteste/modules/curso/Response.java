@@ -13,6 +13,10 @@ public class Response {
         this.duracao = duracao;
     }
 
+    public Integer getCodigo() {
+        return codigo;
+    }
+
     public String getNome() {
         return nome;
     }
